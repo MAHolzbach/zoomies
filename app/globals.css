@@ -75,6 +75,14 @@
   }
 }
 
+.cl-logoBox {
+  height: 40px;
+}
+
+.cl-userButtonPopoverActionButton {
+  color: white;
+}
+
 @layer base {
   * {
     @apply border-border;

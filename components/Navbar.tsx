@@ -1,3 +1,4 @@
+import { SignedIn, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import MobileNav from "./MobileNav";
@@ -10,9 +11,11 @@ const Navbar = () => {
         <h1 className="text-white text-[26px] font-extrabold max-sm:hidden">YOOM</h1>
       </Link>
       <div className="flex-between gap-5">
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
         <MobileNav />
       </div>
-      {/* <Login /> */}
     </nav>
   );
 };

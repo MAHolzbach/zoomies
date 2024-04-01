@@ -1,6 +1,9 @@
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+
+import { shadesOfPurple } from "@clerk/themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +18,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} bg-dark-2`}>{children}</body>
-    </html>
+    <ClerkProvider
+      appearance={{
+        layout: { logoImageUrl: "/icons/yoom-logo.svg", socialButtonsVariant: "iconButton" },
+        baseTheme: shadesOfPurple,
+      }}
+    >
+      <html lang="en">
+        <body className={`${inter.className} bg-dark-2`}>{children}</body>
+      </html>
+    </ClerkProvider>
   );
 }
