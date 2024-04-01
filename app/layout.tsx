@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
+import { shadesOfPurple } from "@clerk/themes";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -16,7 +18,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        layout: { logoImageUrl: "/icons/yoom-logo.svg", socialButtonsVariant: "iconButton" },
+        baseTheme: shadesOfPurple,
+      }}
+    >
       <html lang="en">
         <body className={`${inter.className} bg-dark-2`}>{children}</body>
       </html>
