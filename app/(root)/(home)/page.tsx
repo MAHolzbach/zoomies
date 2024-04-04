@@ -1,26 +1,8 @@
-"use client";
-
 import MeetingTypeList from "@/components/MeetingTypeList";
-import { useEffect, useState } from "react";
-//! Extract time to its own component to avoid state here and re-rendering the whole page.
+import TimeDisplay from "@/components/TimeDisplay";
+
 const Home = () => {
-  const [currentTime, setCurrentTime] = useState(
-    new Date().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })
-  );
   const date = new Intl.DateTimeFormat("en-US", { dateStyle: "full" }).format(new Date());
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      const now = new Date();
-
-      let currentTime = now.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
-      setCurrentTime(currentTime);
-    }, 60000);
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [currentTime]);
 
   return (
     <section className="flex size-full flex-col gap-10 text-white">
@@ -30,7 +12,7 @@ const Home = () => {
             Upcoming Meeting at 12:30PM
           </h2>
           <div className="flex flex-col gap-2">
-            <h1 className="text-4xl font-extrabold lg:text-7xl">{currentTime}</h1>
+            <TimeDisplay />
             <p className="text-lg font-medium text-sky-1 lg:text-2xl">{date}</p>
           </div>
         </div>

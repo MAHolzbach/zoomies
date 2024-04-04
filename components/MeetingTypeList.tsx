@@ -1,3 +1,5 @@
+"use client";
+
 import { homeCards } from "@/constants";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
