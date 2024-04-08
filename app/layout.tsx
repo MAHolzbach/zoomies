@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
+import { Toaster } from "@/components/ui/toaster";
 import { shadesOfPurple } from "@clerk/themes";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -25,7 +26,10 @@ export default function RootLayout({
       }}
     >
       <html lang="en">
-        <body className={`${inter.className} bg-dark-2`}>{children}</body>
+        <body className={`${inter.className} bg-dark-2`}>
+          {children}
+          <Toaster />
+        </body>
       </html>
     </ClerkProvider>
   );
