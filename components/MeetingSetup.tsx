@@ -1,7 +1,12 @@
 import { DeviceSettings, VideoPreview, useCall } from "@stream-io/video-react-sdk";
 import { useEffect, useState } from "react";
+import { Button } from "./ui/button";
 
-const MeetingSetup = () => {
+type TMeetingSetupProps = {
+  setIsSetupComplete: (value: boolean) => void;
+};
+
+const MeetingSetup = ({ setIsSetupComplete }: TMeetingSetupProps) => {
   const [isMicCamToggledOn, setIsMicCamToggledOn] = useState(false);
 
   const call = useCall();
@@ -22,22 +27,23 @@ const MeetingSetup = () => {
 
   return (
     <div className="flex h-screen w-full flex-col items-center justify-center gap-3 text-white">
-      <h1 className="text-2xl font-bold">
-        <VideoPreview />
-        <div className="flex h-16 items-center justify-center gap-3">
-          <label htmlFor="cameraCheckbox" className="flex items-center justify-center gap-2 font-mediun">
-            <input
-              type="checkbox"
-              name="cameraCheckbox"
-              id="cameraCheckbox"
-              checked={isMicCamToggledOn}
-              onChange={(e) => setIsMicCamToggledOn(e.target.checked)}
-            />
-            Join with mic and camera off.
-          </label>
-          <DeviceSettings />
-        </div>
-      </h1>
+      <VideoPreview />
+      <div className="flex h-16 items-center justify-center gap-3">
+        <label htmlFor="cameraCheckbox" className="flex items-center justify-center gap-2 font-mediun">
+          <input
+            type="checkbox"
+            name="cameraCheckbox"
+            id="cameraCheckbox"
+            checked={isMicCamToggledOn}
+            onChange={(e) => setIsMicCamToggledOn(e.target.checked)}
+          />
+          Join with mic and camera off.
+        </label>
+        <DeviceSettings />
+      </div>
+      <Button className="rounded-md bg-green-500 px-4 py-2.5" onClick={() => setIsSetupComplete(true)}>
+        Join Call
+      </Button>
     </div>
   );
 };
