@@ -14,10 +14,8 @@ const MeetingRoom = () => {
     switch (layout) {
       case "grid":
         return <PaginatedGridLayout />;
-
       case "speaker-right":
         return <SpeakerLayout participantsBarPosition="left" />;
-
       default:
         return <SpeakerLayout participantsBarPosition="right" />;
     }
@@ -25,17 +23,20 @@ const MeetingRoom = () => {
 
   return (
     <section className="relative h-screen w-full overflow-hidden pt-4 text-white">
-      <h1>MEETING ROOM</h1>
       <div className="relative flex size-full items-center justify-center">
-        <div className="flex size-full max-w-[1000px] items-center">
+        <div className=" flex size-full max-w-[1000px] items-center">
           <CallLayout />
         </div>
-        <div className={cn("h-[calc(100vh-86px)] hidden ml-2", { "show-block": showParticipants })}>
+        <div
+          className={cn("h-[calc(100vh-86px)] hidden ml-2", {
+            "show-block": showParticipants,
+          })}
+        >
           <CallParticipantsList onClose={() => setShowParticipants(false)} />
         </div>
-        <div className="fixed bottom-0 flex w-full items-center justify-center gap-5">
-          <CallControls />
-        </div>
+      </div>
+      <div className="fixed bottom-0 flex w-full items-center justify-center gap-5">
+        <CallControls />
       </div>
     </section>
   );

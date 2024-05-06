@@ -1,6 +1,7 @@
 "use client";
 
 import MeetingRoom from "@/components/MeetingRoom";
+// import MeetingRoomTest from "@/components/MeetingRoomTest";
 import MeetingSetup from "@/components/MeetingSetup";
 import StreamLoader from "@/components/StreamLoader";
 import { useGetCallById } from "@/hooks/useGetCallById";
@@ -21,7 +22,12 @@ const Meeting = ({ params: { id } }: { params: { id: string } }) => {
     <main className="h-screen w-full">
       <StreamCall call={call}>
         <StreamTheme>
-          {!isSetupComplete ? <MeetingSetup setIsSetupComplete={setIsSetupComplete} /> : <MeetingRoom />}
+          {!isSetupComplete ? (
+            <MeetingSetup setIsSetupComplete={setIsSetupComplete} />
+          ) : (
+            <MeetingRoom />
+            // <MeetingRoomTest />
+          )}
         </StreamTheme>
       </StreamCall>
     </main>

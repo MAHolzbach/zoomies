@@ -25,7 +25,7 @@ import { cn } from "@/lib/utils";
 
 type CallLayoutType = "grid" | "speaker-left" | "speaker-right";
 
-const MeetingRoom = () => {
+const MeetingRoomTest = () => {
   const searchParams = useSearchParams();
   const isPersonalRoom = !!searchParams.get("personal");
   const router = useRouter();
@@ -96,4 +96,4 @@ const MeetingRoom = () => {
   );
 };
 
-export default MeetingRoom;
+export default MeetingRoomTest;
